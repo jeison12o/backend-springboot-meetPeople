@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projects.springserviciosmeetpeople.document.Multimedia;
-import com.projects.springserviciosmeetpeople.model.MultimediaRequest;
+import com.projects.springserviciosmeetpeople.dto.MultimediaRequest;
 import com.projects.springserviciosmeetpeople.service.MultimediaService;
 
 @RestController
@@ -52,14 +52,15 @@ public class MultimediaController {
 	}
 	
 	@PostMapping("/multimedia")
-	public ResponseEntity<?> createMultimedia(@RequestBody Multimedia multimedia) {
+	public ResponseEntity<?> createMultimedia(@RequestBody MultimediaRequest multimedia) {
+		Multimedia m = null;
 		try {
-			multimedia = multimediaService.save(multimedia);
+			m = multimediaService.save(multimedia);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
-		return  ResponseEntity.status(HttpStatus.CREATED).body(multimedia);
+		return  ResponseEntity.status(HttpStatus.CREATED).body(m);
 	}
 	
 	@DeleteMapping("/multimedia/{id}")

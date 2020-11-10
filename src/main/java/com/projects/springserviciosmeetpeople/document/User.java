@@ -1,6 +1,7 @@
 package com.projects.springserviciosmeetpeople.document;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -25,15 +26,17 @@ public class User implements Serializable{
 	
 	private String name;
 	
-	private String email;
+	private String lastName;
+	
+	private String birthDate;
 	
 	private String phoneNumber;
-	
+		
 	private String nameUser;
+	
+	private String password;
 	
 	private String urlPhotoProfile;
 	
 	private boolean active;
-	
-	private String password;
 }

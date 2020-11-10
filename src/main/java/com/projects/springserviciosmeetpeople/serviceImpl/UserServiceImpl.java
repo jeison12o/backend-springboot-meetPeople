@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService{
 		} else {
 			throw new NameUserNotRepeated();
 		}
-		
 	}
 	
 	@Override
@@ -56,7 +55,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User getOneNameUser(String nameUser) throws UserNotFound {
 		User user = userRepository.findByNameUser(nameUser);
-		if(user == null) throw new UserNotFound();
+		if(user == null) {
+			throw new UserNotFound();
+		}
 		return user;
 	}
 
